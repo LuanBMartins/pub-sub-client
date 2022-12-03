@@ -18,23 +18,20 @@ const App = (props) => {
   const [notification, setNotification] = useState([])
   const [checked, setChecked] = React.useState([])
   const [desconto, setDesconto] = React.useState(25);
+  const [games, setGames] = React.useState([])
   const [price, setPrice] = React.useState(100);
   
   const { sendMessage } = useWebSocket('ws://localhost:3030', {
     onOpen: () => console.log(`Connected to App WS`),
     onMessage: (msg) => {
 
-      console.log('ABABA', !(notification.filter(value => value.id === JSON.parse(msg.data).id).length > 0));
-
       if(msg.data !== 'recebido!' 
       && (notification.filter(value => value.id === JSON.parse(msg.data).id).length > 0)
       ){
         return
       }
-      
 
       if (msg.data !== 'recebido!') {
-        console.log("🚀 ~ file: App.js:27 ~ App ~ msg.data", msg.data)
         const array = notification
         array.push(JSON.parse(msg.data))
         setNotification(array)
@@ -78,6 +75,8 @@ const App = (props) => {
             setDesconto={setDesconto} 
             price={price}
             setPrice={setPrice}
+            games={games}
+            setGames={setGames}
             />
           </Route>
           <Route path="/service" exact>

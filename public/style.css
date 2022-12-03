@@ -14,11 +14,26 @@ main {
     background-color: rgb(255, 255, 255);
 }
 
+.painel .Card {
+    display: inline-block;
+}
+
+.CardBody {
+    overflow: auto;
+}
+
+.card-fluid {
+    white-space: nowrap;
+    height: 70vh
+}
+
 .row-fluid{
     white-space: nowrap;
     height: 60vh;
 }
-.row-fluid .col-lg-3{
+.row-fluid .col-lg-3,
+.card-fluid .col-lg-3
+{
     margin-top: 10px;
     display: inline-block;
 }
